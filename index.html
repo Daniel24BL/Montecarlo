@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte carlo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="Estilo.css" rel="stylesheet" />
+</head>
+
+
+<header>
+    <div class="Encabezado" style="background-color: #aad1e7e8">
+        <h1><center><strong>Simulación Monte Carlo</strong></center></h1>
+        <h3><center><strong>Elaborado por:</strong> Daniel Baque López</center></h3>
+    </div>
+</header>
+<br><br>
+<body >
+
+    <div class="Container">
+
+    <div class="Pregunta1">
+        <h2><font color='#000080'>Ejercicio 1.</font></h2>
+        <p style='text-align: justify;' border="30px" overflow="hidden;">
+            <strong><FONT SIZE=4>
+                Tratando de determinar el número óptimo de autos comprar. 
+                El costo promedio anual de un auto es de 75.000 dolares. Además, está compañía ha recopilado 
+                las siguientes probabilidades de operación:</FONT>
+            </strong>
+        </p>
+        <br>
+        <center><img src="./images/tabla1.png"></center>
+        <br>
+
+        <p style='text-align: justify;'>
+            <strong><FONT SIZE=4>
+                Si el alquiler diario por auto es de 700 dolares, el costo de no tener un auto disponible 
+                cuando se solicita es de 400 dolares y el costo de tener un auto ocioso durante un día es de
+                100 dolares, ¿cuál es la cantidad de autos que debería comprar la compañía?  Asuma que un auto 
+                que se alquila está disponible al día siguiente.</FONT>
+            </strong>
+        </p>
+        <p style='text-align: justify;'>
+            <strong><FONT SIZE=4>
+                Simule el sistema para un año de 360 días (para la evaluación 15 días de funcionamiento) y 
+                muestre un análisis de costos de los 15 días simulados.</FONT>
+            </strong>
+        </p>
+    </div>
+    <br>
+    <h3><font color='#228B22'>Solución: </font></h3>
+    <br>
+    <p style='text-align: justify;'> <FONT SIZE=4>A)  Comenzamos realizando el cuadro de las probabilidades para obtener la probabilidad acumulada y de esa
+        manera poder determinar el rango mínimo y el máximo.</FONT></p>
+    <div>
+        <table class="table table-responsive table-bordered" >
+            <thead>
+                <tr>
+                    <th>Número de dias de alquiler por auto</th>
+                    <th>Probabilidad </th>
+                    <th>Probabilidad Acumulada</th>
+                    <th>Rango Menor</th>
+                    <th>Rango Mayor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>0.4</td>
+                    <td>0.4</td>
+                    <td>0</td>
+                    <td>0.4</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0.35</td>
+                    <td>0.75</td>
+                    <td>0.41</td>
+                    <td>0.75</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0.15</td>
+                    <td>0.9</td>
+                    <td>0.76</td>
+                    <td>0.9</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>0.1</td>
+                    <td>1</td>
+                    <td>0.91</td>
+                    <td>1</td>
+                </tr>
+                
+                <tr>
+                    <th>Rango Mayor</th>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br><br>
+    <p style='text-align: justify;'> <FONT SIZE=4>B)  Luego de haber determinado los rangos procedemos 
+        con la simulación aplicando el método de Montecarlo con el objetivo de resolver el objetivo 
+        indicado el cual es determinar la cantidad exacta de vehículos que necesita la empresa de 
+        rentas.</FONT></p>
+    <div>
+        <table class="table table-responsive table-bordered" >
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>N. Aleaotiros de Autos</th>
+                    <th>N. Aleaotiros de Días</th>
+                    <th>Autos Alquilados</th>
+                    <th>Días Alquilados</th>
+                    <th>Valor de Alquilar Autos</th>
+                    <th>Costo de no tener Auto disponible</th>
+                    <th>Costo de Oscioso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>0.13089</td>
+                    <td>0.66119</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>700</td>
+                    <td>400</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0.96696</td>
+                    <td>0.97184</td>
+                    <td>0</td>
+                    <td>4</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0.78853</td>
+                    <td>0.30863</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>0.88534</td>
+                    <td>0.65890</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>0.51116</td>
+                    <td>0.77847</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>0.36096</td>
+                    <td>0.28647</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>0.69644</td>
+                    <td>0.65420</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>0.79794</td>
+                    <td>0.00786</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>0.87306</td>
+                    <td>0.51109</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>0.29751</td>
+                    <td>0.30685</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>0.95052</td>
+                    <td>0.06456</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>0.70872</td>
+                    <td>0.55139</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>0.93587</td>
+                    <td>0.29237</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>0.16929</td>
+                    <td>0.04104</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>700</td>
+                    <td>400</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>0.62718</td>
+                    <td>0.09312</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>1400</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <p style='text-align: justify;'> <FONT SIZE=4> <strong>Respuesta:</strong> Si corremos la simulación 
+        con los números del 1 al 4 notaremos que desde el 1 al 3 tenemos ganancias mientras que en el 4 
+        tenemos perdidas a pesar de esto el que reporta más beneficios económicos anuales es el 
+        tener 2.</FONT></p>
+        <br><br>
+
+    <div class="Pregunta2">
+        <h2><font color='#000080'>Ejercicio 2.</font></h2>
+        <p style='text-align: justify;'>
+            <strong><FONT SIZE=4>
+                Los vehículos de una planta están sometidos a mantenimiento preventivo. Todas las labores de 
+                mantenimiento pueden ser efectuadas por un hombre, pero en algunos casos el trabajo puede ser 
+                realizado en menos tiempo por un equipo de dos hombres. Con un solo hombre el tiempo para 
+                efectuar el mantenimiento de un vehículo son: 1,25; 1,50; 1,75; ó 2 horas con probabilidades 
+                de 0,15; 0,25; 0,40; y 0,20 respectivamente. Con dos hombres se requieren 0,50; 0,75; 1,00; 
+                ó 1,25 horas con probabilidades de 0,25; 0,35; 0,30; y 0,10 respectivamente. Cada miembro del 
+                equipo recibe un pago de 4.50 dolares por hora y un sobresueldo de 1 dolar por hora por equipo. 
+                Utilizando los siguientes números aleatorios, determinar si el mantenimiento es más económico 
+                con un solo hombre o con el equipo de dos hombres.</FONT>
+            </strong>
+        </p>
+        <br>
+        <center><img src="./images/tabla2.png"></center>
+        <br>
+        <p style='text-align: justify;'>
+            <strong><FONT SIZE=4>
+                1era fila 1 hombre, segunda 2 hombres.</FONT>
+            </strong>
+        </p>
+        <br>
+        <h3><font color='#228B22'>Solución: </font></h3>
+        <br>
+        <p style='text-align: justify;'> <FONT SIZE=4>A)  Comenzamos realizando el cuadro de las probabilidades para obtener la probabilidad acumulada y de esa
+            manera poder determinar el rango mínimo y el máximo cuando la labor solo la realiza un solo 
+            hombre..</FONT></p>
+    </div>
+    <div>
+        <div>
+            <table class="table table-responsive table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Tiempo en Horas</th>
+                        <th>Probabilidad </th>
+                        <th>Probabilidad Acumulada</th>
+                        <th>Rango Menor</th>
+                        <th>Rango Mayor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.25</td>
+                        <td>0.15</td>
+                        <td>0.15</td>
+                        <td>0</td>
+                        <td>0.15</td>
+                    </tr>
+                    <tr>
+                        <td>1,50</td>
+                        <td>0.25</td>
+                        <td>0.40</td>
+                        <td>0.16</td>
+                        <td>0.40</td>
+                    </tr>
+                    <tr>
+                        <td>1.75</td>
+                        <td>0.40</td>
+                        <td>0.80</td>
+                        <td>0.41</td>
+                        <td>0.80</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1.25</td>
+                        <td>1</td>
+                        <td>0.81</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+            <p style='text-align: justify;'> <FONT SIZE=4>B)  Luego de haber determinado los rangos procedemos con 
+                la simulación cuando solo labora un hombre.</FONT></p>
+        <br>
+
+        <div>
+            <table class="table table-responsive table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Evento</th>
+                        <th>N. Aleaotiros</th>
+                        <th>Horas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>0.38</td>
+                        <td>1.50</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>0.89</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>0.40</td>
+                        <td>1.50</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>0.02</td>
+                        <td>1.24</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>0.99</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>0.37</td>
+                        <td>1.50</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>0.46</td>
+                        <td>1.75</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>0.25</td>
+                        <td>1.50</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>0.02</td>
+                        <td>1.24</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>0.20</td>
+                        <td>1.50</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br><br>
+        <p style='text-align: justify;'> <FONT SIZE=4>C)  Luego realizamos el segundo cuadro de probabilidades para obtener 
+            la probabilidad acumulada y de esta manera determinar el rango mínimo y el máximo cuando la labor la realizan 
+            dos hombres.</FONT></p>
+        
+        <div>
+            <table class="table table-responsive table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Tiempo en Horas</th>
+                        <th>Probabilidad </th>
+                        <th>Probabilidad Acumulada</th>
+                        <th>Rango Menor</th>
+                        <th>Rango Mayor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0.50</td>
+                        <td>0.25</td>
+                        <td>0.25</td>
+                        <td>0</td>
+                        <td>0.25</td>
+                    </tr>
+                    <tr>
+                        <td>0.75</td>
+                        <td>0.35</td>
+                        <td>0.60</td>
+                        <td>0.26</td>
+                        <td>0.60</td>
+                    </tr>
+                    <tr>
+                        <td>1.00</td>
+                        <td>0.30</td>
+                        <td>0.90</td>
+                        <td>0.61</td>
+                        <td>0.90</td>
+                    </tr>
+                    <tr>
+                        <td>1.25</td>
+                        <td>0.10</td>
+                        <td>1</td>
+                        <td>0.91</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br><br>
+        
+        <p style='text-align: justify;'> <FONT SIZE=4>D)  Luego de haber determinado los rangos procedemos ahora 
+            a realizar la simulación cuando laboran dos hombres.</FONT></p>
+
+        <div>
+            <table class="table table-responsive table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Evento</th>
+                        <th>N. Aleaotiros</th>
+                        <th>Horas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>0.78</td>
+                        <td>1.00</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>0.92</td>
+                        <td>1.25</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>0.34</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>0.91</td>
+                        <td>1.25</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>0.43</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>0.59</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>0.66</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>0.16</td>
+                        <td>0.50</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>0.34</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>0.87</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        <p style='text-align: justify;'> <FONT SIZE=4> <strong>Respuesta:</strong> Luego de haber realizado la 
+            simulación para ambos casos se obtuvo que cuando los mantenimientos a los vehículos solo los realiza 
+            un hombre la labor es efectuada en un total de 16 horas obteniendo un promedio de 1,6. Por otro lado 
+            cuando las labores son realizadas en equipo de 2, las tareas son cumplidas en 9 horas obteniendo un 
+            promedio de 0,9. Por lo tanto gracias a la simulación se puede observar que cuando se trabaja en 
+            equipo se obtiene un costo de $90,00 y cuando las tareas solo son realizadas por un hombre el costo 
+            es de $72,00 por lo tanto es más económico.</FONT></p>
+        <br><br>
+
+    </div>
+    </div>
+</body>
+
+</html>
